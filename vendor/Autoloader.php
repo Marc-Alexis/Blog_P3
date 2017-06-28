@@ -29,12 +29,12 @@ class Autoloader {
         // c'est le chemin vers notre fichier
         $path = implode(DS, $parts);
         $file = $className.'.php';
-        echo('path='.$path.'<br>');
-        echo('file='.$file.'<br>');
+        echo('<br>path='.$path.'<br>');
+        echo('<br>file='.$file.'<br>');
 
         // chemin vers le fichier ".php" requis
         $filepath = '..'.DS.strtolower($path).DS.$file;
-        echo('filepath='.$filepath.'<br>');
+        echo('<br>filepath='.$filepath.'<br>');
 
         require $filepath;
 	}
