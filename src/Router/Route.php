@@ -61,7 +61,7 @@ class Route{
 			
 			$params = explode("#", $this->callable);
 
-			$controller = "Src\\Controller\\" . $params[0] . "Controller";
+			$controller = "Src".DS."Controller".DS . $params[0] . "Controller";
 
 			$controller = new $controller();
 

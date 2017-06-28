@@ -18,25 +18,32 @@ class Autoloader {
 	 */
 	static function autoload($class){
 
-        // découpage de la variable $class par "\"
-        $parts = preg_split('#\\\#', $class);
+                // découpage de la variable $class par "\"
+                $parts = preg_split('#\\\#', $class);
 
-        // extraction du dernier element 
-        $className = array_pop($parts);
-        echo('<br>className='.$className.'<br>');
+                // extraction du dernier element 
+                $className = array_pop($parts);
+                echo('<br>className='.$className.'<br>');
 
-        // recollage du nom de la classe avec ses namespaces et accollage de l'extension
-        // c'est le chemin vers notre fichier
-        $path = implode(DS, $parts);
-        $file = $className.'.php';
-        echo('<br>path='.$path.'<br>');
-        echo('<br>file='.$file.'<br>');
+                // recollage du nom de la classe avec ses namespaces et accollage de l'extension
+                // c'est le chemin vers notre fichier
+                $path = implode(DS, $parts);
+                $file = $className.'.php';
+                echo('<br>path='.$path.'<br>');
+                echo('<br>file='.$file.'<br>');
 
-        // chemin vers le fichier ".php" requis
-        $filepath = '..'.DS.strtolower($path).DS.$file;
-        echo('<br>filepath='.$filepath.'<br>');
+                // chemin vers le fichier ".php" requis
+                $filepath = '..'.DS.strtolower($path).DS.$file;
+                echo('<br>filepath='.$filepath.'<br>');
 
-        require $filepath;
+                if (file_exists($filepath)) {
+                    
+                    require $filepath;   
+                } else {
+                        throw new \Exception("Le fichier n'existe pas");
+                        
+                }
+        
 	}
 }
 Autoloader::register();
