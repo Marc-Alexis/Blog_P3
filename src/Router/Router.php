@@ -14,6 +14,7 @@ class Router{
 	public function __construct($url){
 
 		$this->url = $url;
+		echo "<br>La classe 'Router' a été demandée<br>";
 	}
 
 	public function get($path, $callable, $name = null){

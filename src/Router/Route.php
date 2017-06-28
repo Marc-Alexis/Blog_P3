@@ -16,6 +16,7 @@ class Route{
 		
 		$this->path = trim($path, '/');
 		$this->callable = $callable;
+		echo "<br>La classe 'Route' a été demandée<br>";
 	}
 
 	public function with($param, $regex){
@@ -66,10 +67,6 @@ class Route{
 			$controller = new $controller();
 
 			return call_user_func_array([$controller, $params[1]], $this->matches);
-
-			$action = params[1];
-
-			return $controller->$action();
 
 		} else {
 

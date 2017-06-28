@@ -4,10 +4,10 @@ namespace Src\Controller;
 /**
 * 
 */
-class PostsController{
+class ArticlesController{
 
 	public function __construct(){
-		echo "La classe PostsController a bien été chargée";
+		
 	}
 
 	public function show($id){
