@@ -38,7 +38,11 @@ class Autoloader {
 
                 if (file_exists($filepath)) {
                     
-                    require $filepath;   
+                    require $filepath;
+                    if (!class_exists($className)) {
+                         throw new \Exception("Class not found");
+                               
+                    }
                 } else {
                         throw new \Exception("Le fichier n'existe pas");
                         
