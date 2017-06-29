@@ -16,7 +16,6 @@ class Route{
 		
 		$this->path = trim($path, '/');
 		$this->callable = $callable;
-		echo "<br>La classe 'Route' a été demandée<br>";
 	}
 
 	public function with($param, $regex){
