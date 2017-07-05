@@ -37,16 +37,22 @@ class Form{
 	 * @return string
 	 */
 	protected function getValue($index){
+		if (is_object($this->data)) {
+			return $this->data->$index;
+		}
 		return isset($this->data[$index]) ? $this->data[$index] : null;
 	}
 
 	/**
-	 * @param $name string 
+	 * @param $name string
+	 * @param $label
+	 * @param array $options
 	 * @return string
 	 */
-	public function input($name){
+	public function input($name, $label, $options = []){
+		$type = isset($options['type']) ? $options['type'] : 'text';
 		return $this->surround(
-			'<input type="text" name="' . $name .'" value="' . $this->getValue($name) . '">'
+			'<input type="' . $type . '" name="' . $name .'" value="' . $this->getValue($name) . '">'
 			);
 	}
 
