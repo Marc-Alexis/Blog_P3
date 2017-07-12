@@ -9,7 +9,7 @@ use Core\Entity\Entity;
 class PostEntity extends Entity{
 
 	public function getUrl(){
-		return 'index.php?p=posts.show&id=' . $this->id;
+		return '/blog_P3/public/posts/' . $this->id;
 	}
 
 	public function getExcerpt(){
