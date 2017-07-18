@@ -14,6 +14,10 @@ $router->get('/category/:id', 'posts.category')->with('id', '[0-9]+');
 $router->get('/posts/:id', 'posts.show')->with('id', '[0-9]+');
 $router->get('/', 'posts.index');
 
+// Comments
+$router->post('/posts/addcom/:id', 'posts.addComment')->with('id', '[0-9]+');
+$router->get('/posts/report/:art_id/:id', 'posts.reportComment')->with('id', '[0-9]+');
+
 // Users
 $router->get('/logout', 'users.logout');
 $router->get('/login', 'users.login');
@@ -45,6 +49,11 @@ $router->post('/admin/users/delete', 'admin.users.delete');
 $router->get('/admin/users/add', 'admin.users.add');
 $router->post('/admin/users/add', 'admin.users.add');
 $router->get('/admin/users', 'admin.users.index');
+
+// /Comments
+$router->get('/admin/comments', 'admin.comments.index');
+$router->post('/admin/comments/delete', 'admin.comments.delete');
+
 
 $router->run();
 

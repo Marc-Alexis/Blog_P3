@@ -18,7 +18,7 @@ class UsersController extends AppController{
         if (!empty($_POST)) {
             $result = $this->User->create([
                 'username' => $_POST['username'],
-                'password' => sha1($_POST['username']),
+                'password' => sha1($_POST['password']),
                 'role' => $_POST['role']
             ]);
             return $this->index();

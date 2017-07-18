@@ -2,7 +2,7 @@
 
 <p>
 	<a href="<?= $config->get('categories_add'); ?>" class="btn btn-success">Ajouter</a>
-	<a href="<?= $config->get('admin_posts'); ?>" class="btn btn-default">Retour aux articles</a>
+	<a href="<?= $config->get('admin_posts'); ?>" class="btn btn-default">Articles</a>
     <a href="<?= $config->get('admin_users'); ?>" class="btn btn-default">Utilisateurs</a>
 </p>
 

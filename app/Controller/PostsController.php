@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use \Core\HTML\BootstrapForm;
 
 class PostsController extends AppController{
 
@@ -7,6 +8,7 @@ class PostsController extends AppController{
 		parent::__construct();
         $this->loadModel('Post');
         $this->loadModel('Category');
+        $this->loadModel('Comment');
     }
 
 	public function index(){
@@ -30,6 +32,30 @@ class PostsController extends AppController{
 
 	public function show($id){
 		$article = $this->Post->findWithCategory($id);
-		$this->render('posts.show', compact('article'));
+		$comments = $this->Comment->lastByArticle($id);
+        $form = new BootstrapForm($_POST);
+		$this->render('posts.show', compact('article', 'comments', 'form'));
 	}
+
+    public function addComment($id){
+        if (!empty($_POST)) {
+            $result = $this->Comment->create([
+                'content' => $_POST['content'],
+                'art_id' => $id,
+                'usr_id' => $_SESSION['auth']
+            ]);
+            if ($result) {
+                return $this->show($id);
+            }
+        }
+    }
+
+    public function reportComment($art_id, $id){
+        $result = $this->Comment->update($id, [
+            'reported' => TRUE,
+        ]);
+        if ($result) {
+            return $this->show($art_id);
+        }
+    }
 }
