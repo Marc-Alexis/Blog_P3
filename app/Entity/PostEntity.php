@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 use Core\Entity\Entity;
+use Core\Config;
 
 /**
  * Class CategoryEntity
@@ -9,7 +10,9 @@ use Core\Entity\Entity;
 class PostEntity extends Entity{
 
 	public function getUrl(){
-		return '/blog_P3/public/posts/' . $this->id;
+		$config = Config::getInstance('../config/config.php');
+		extract(compact($config));
+		return $config->get('show') . $this->id;
 	}
 
 	public function getExcerpt(){

@@ -6,9 +6,9 @@ use \App;
 class AppController extends Controller{
 
 	protected $template = 'default';
-
+	
 	public function __construct(){
-		$this->viewPath = ROOT . '/app/Views/';
+		$this->viewPath = ROOT . DS. 'app' . DS . 'Views'. DS;
 	}
 
 	protected function loadModel($modelName){

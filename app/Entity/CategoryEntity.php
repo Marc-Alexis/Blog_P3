@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 use Core\Entity\Entity;
+use Core\Config;
 
 /**
  * Class CategoryEntity
@@ -9,6 +10,8 @@ use Core\Entity\Entity;
 class CategoryEntity extends Entity{
 
 	public function getUrl(){
-		return 'index.php?p=posts.category&id=' . $this->id;
+		$config = Config::getInstance('../config/config.php');
+		extract(compact($config));
+		return $config->get('posts_category') . $this->id;
 	}
 }

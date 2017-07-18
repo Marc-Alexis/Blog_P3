@@ -37,6 +37,7 @@ class DBAuth{
 		if ($user) {
 			if ($user->password === sha1($password)){
 				$_SESSION['auth'] = $user->id;
+                $_SESSION['name'] = $user->username;
 				return true;
 			}
 		}
@@ -49,4 +50,14 @@ class DBAuth{
 	public function logged(){
 		return isset($_SESSION['auth']);
 	}
+
+    public function loggedAdmin(){
+	    if ($_SESSION){
+            $user_id = $_SESSION['auth'];
+            $user = $this->db->prepare('SELECT * FROM users WHERE id = ?', [$user_id], null, true);
+            if($user->role === 'admin' ){
+                return isset($_SESSION['auth']);
+            }
+        }
+    }
 }

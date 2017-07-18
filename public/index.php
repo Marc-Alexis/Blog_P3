@@ -5,19 +5,46 @@ define('ROOT', dirname(__DIR__));
 App::load();
 use Src\Router\Router;
 
+// Initialisation du router
 $router = new Router($_GET['url']);
 
-$router->get('/admin/categories/edit/:id', 'admin.categories.edit')->with('id', '[0-9]+');
-$router->get('/admin/posts/edit/:id', 'admin.posts.edit')->with('id', '[0-9]+');
-$router->post('/admin/categories/delete', 'admin.categories.delete');
-$router->post('/admin/posts/delete', 'admin.posts.delete');
-$router->get('/admin/categories/add', 'admin.categories.add');
-$router->get('/admin/posts/add', 'admin.posts.add');
-$router->get('/admin/posts', 'admin.posts.index');
-$router->get('/admin/categories', 'admin.categories.index');
-$router->get('/posts/:id', 'posts.show')->with('id', '[0-9]+');
+// Initialisation des routes
+// Index
 $router->get('/category/:id', 'posts.category')->with('id', '[0-9]+');
+$router->get('/posts/:id', 'posts.show')->with('id', '[0-9]+');
 $router->get('/', 'posts.index');
+
+// Users
+$router->get('/logout', 'users.logout');
+$router->get('/login', 'users.login');
+$router->post('/login', 'users.login');
+$router->get('/register', 'users.register');
+$router->post('/register', 'users.register');
+
+// Admin
+// /Posts
+$router->get('/admin/posts/edit/:id', 'admin.posts.edit')->with('id', '[0-9]+');
+$router->post('/admin/posts/edit/:id', 'admin.posts.edit')->with('id', '[0-9]+');
+$router->post('/admin/posts/delete', 'admin.posts.delete');
+$router->get('/admin/posts/add', 'admin.posts.add');
+$router->post('/admin/posts/add', 'admin.posts.add');
+$router->get('/admin/posts', 'admin.posts.index');
+
+// /Categories
+$router->get('/admin/categories/edit/:id', 'admin.categories.edit')->with('id', '[0-9]+');
+$router->post('/admin/categories/edit/:id', 'admin.categories.edit')->with('id', '[0-9]+');
+$router->post('/admin/categories/delete', 'admin.categories.delete');
+$router->get('/admin/categories/add', 'admin.categories.add');
+$router->post('/admin/categories/add', 'admin.categories.add');
+$router->get('/admin/categories', 'admin.categories.index');
+
+// /Users
+$router->get('/admin/users/edit/:id', 'admin.users.edit')->with('id', '[0-9]+');
+$router->post('/admin/users/edit/:id', 'admin.users.edit')->with('id', '[0-9]+');
+$router->post('/admin/users/delete', 'admin.users.delete');
+$router->get('/admin/users/add', 'admin.users.add');
+$router->post('/admin/users/add', 'admin.users.add');
+$router->get('/admin/users', 'admin.users.index');
 
 $router->run();
 

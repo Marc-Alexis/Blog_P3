@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -21,8 +20,19 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/blog_P3/public">Blog P3</a>
-          <a class="navbar-brand" href="/blog_P3/public/admin/posts">Administration</a>
+          <a class="navbar-brand" href="<?= $config->get('home'); ?>">Blog P3</a>
+          <?php use Core\Auth\DBAuth; $app = App::getInstance(); $auth = new DBAuth($app->getDb()); ?>
+          <?php if ($auth->loggedAdmin()) : ?>
+            <a class="navbar-brand"><?= $_SESSION['name']?></a>
+            <a class="navbar-brand" href="<?= $config->get('admin_posts'); ?>">Administration</a>
+            <a class="navbar-brand" href="<?= $config->get('logout'); ?>">Déconnexion</a>
+          <?php elseif ($auth->logged()) : ?>
+            <a class="navbar-brand"><?= $_SESSION['name']?></a>
+            <a class="navbar-brand" href="<?= $config->get('logout'); ?>">Déconnexion</a>
+          <?php else: ?>
+            <a class="navbar-brand" href="<?= $config->get('login'); ?>">Connexion</a>
+            <a class="navbar-brand" href="<?= $config->get('register'); ?>">Inscription</a>
+          <?php endif; ?>
         </div>
       </div>
     </nav>

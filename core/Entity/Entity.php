@@ -1,7 +1,7 @@
 <?php
 namespace Core\Entity;
 
-// Classe parent. Représente une entité.
+// Classe parent. Représente un objet.
 class Entity{
 
 	/**
@@ -11,5 +11,10 @@ class Entity{
 		$method = 'get' . ucfirst($key);
 		$this->$key = $this->$method();
 		return $this->$key;
+	}
+
+	protected function getUrl(){
+		$config = Config::getInstance('../config/config.php');
+		extract(compact($config));
 	}
 }

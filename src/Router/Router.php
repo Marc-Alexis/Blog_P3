@@ -40,11 +40,11 @@ class Router{
 			throw new RouterException("REQUEST_METHOD DOES NOT EXIST");
 		}
 		foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
-			if ($route->match($this->url)) {			
+			if ($route->match($this->url)) {
 				return $route->call();
 			}
 		}
-		throw new RouterException("NO MATCHING ROUTES");	
+		throw new RouterException("NO MATCHING ROUTES");
 	}
 
 	public function url($name, $params = []){

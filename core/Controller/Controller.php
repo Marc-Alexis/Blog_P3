@@ -1,5 +1,6 @@
 <?php
 namespace Core\Controller;
+use Core\Config;
 
 class Controller {
 
@@ -8,7 +9,9 @@ class Controller {
 
 	protected function render($view, $variables = []){
 		ob_start();
+		$config = Config::getInstance('../config/config.php');
 		extract($variables);
+		extract(compact($config));
 		require($this->viewPath . str_replace('.', '/', $view) . '.php');
 		$content = ob_get_clean();
 		require($this->viewPath . 'templates/' . $this->template . '.php');
