@@ -5,7 +5,7 @@ use \App;
 
 class AppController extends Controller{
 
-	protected $template = 'default';
+	protected $template = 'layout';
 	
 	public function __construct(){
 		$this->viewPath = ROOT . DS. 'app' . DS . 'Views'. DS;
