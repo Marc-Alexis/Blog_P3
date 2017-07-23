@@ -51,6 +51,6 @@ class Router{
 		if (!isset($this->namedRoutes[$name])) {
 			throw new RouterException("NO ROUTE MATCHES WITH THIS NAME");
 		}
-		return $this->namedRoutes[$name]->getUrl($params); 
+		return $this->namedRoutes[$name]->getUrl($params);
 	}
 }

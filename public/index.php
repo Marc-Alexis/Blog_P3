@@ -1,4 +1,5 @@
 <?php
+
 require '../app/App.php';
 define('DS', DIRECTORY_SEPARATOR); // meilleur portabilité sur les différents systemes.
 define('ROOT', dirname(__DIR__));
@@ -53,7 +54,6 @@ $router->get('/admin/users', 'admin.users.index');
 // /Comments
 $router->get('/admin/comments', 'admin.comments.index');
 $router->post('/admin/comments/delete', 'admin.comments.delete');
-
 
 $router->run();
 
