@@ -98,13 +98,6 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="/blog_P3/public/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-<!-- Contact Form JavaScript -->
-<script src="/blog_P3/public/js/jqBootstrapValidation.js"></script>
-<script src="/blog_P3/public/js/contact_me.js"></script>
-
-<!-- Theme JavaScript -->
-<script src="/blog_P3/public/js/clean-blog.min.js"></script>
-
 </body>
 
 </html>
