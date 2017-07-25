@@ -19,7 +19,8 @@ class PostsController extends AppController{
 			$result = $this->Post->create([
 				'title' => $_POST['title'],
 				'content' => $_POST['content'],
-				'cat_id' => $_POST['cat_id']
+				'cat_id' => $_POST['cat_id'],
+                'date' => 'NOW()'
 			]);
 			if ($result) {
 				return $this->index();

@@ -65,11 +65,17 @@ class Table{
 		$sql_parts = [];
 		$attributes = [];
 		foreach ($fields as $k => $v) {
-			$sql_parts[] = "$k = ?";
-			$attributes[] = $v;
+		    if ($v == 'NOW()'){
+		        $sql_parts[] = "$k = $v";
+            } else{
+                $sql_parts[] = "$k = ?";
+                $attributes[] = $v;
+            }
+
 		}
 		$sql_part = implode(', ', $sql_parts);
-		return $this->query("INSERT INTO {$this->table} SET $sql_part", $attributes, true);
+		$req = $this->query("INSERT INTO {$this->table} SET $sql_part", $attributes, true);
+		return $req;
 	}
 
 	/**
@@ -103,4 +109,12 @@ class Table{
 			);
 		}
 	}
+
+    protected function strposa($haystack, $needle, $offset=0) {
+        if(!is_array($needle)) $needle = array($needle);
+        foreach($needle as $query) {
+            if(strpos($haystack, $query, $offset) !== false) return true; // stop on first true result
+        }
+        return false;
+    }
 }

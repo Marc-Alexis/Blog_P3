@@ -2,8 +2,6 @@
 
 <p>
 	<a href="<?= $config->get('users_add'); ?>" class="btn btn-success">Ajouter</a>
-    <a href="<?= $config->get('admin_posts'); ?>" class="btn btn-default">Articles</a>
-	<a href="<?= $config->get('admin_categories'); ?>" class="btn btn-default">Catégories</a>
 </p>
 
 <table class="table">
@@ -11,7 +9,6 @@
 		<tr>
 			<td>ID</td>
 			<td>Nom</td>
-            <td>Mot de passe</td>
 			<td>Rôle</td>
 			<td>Actions</td>
 		</tr>
@@ -21,7 +18,6 @@
 		<tr>
 			<td><?= $user->id; ?></td>
 			<td><?= $user->username; ?></td>
-            <td><?= $user->password; ?></td>
             <td><?= $user->role; ?></td>
 			<td>
 				<a href="<?= $config->get('users_edit') . $user->id; ?>" class="btn btn-primary">Editer</a>

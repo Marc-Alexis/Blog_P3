@@ -45,6 +45,14 @@ class DBAuth{
 		return false;
 	}
 
+	public function userExists($username){
+        $user = $this->db->prepare('SELECT * FROM users WHERE username = ?', [$username], null, true);
+        if ($user) {
+            return true;
+        }
+        return false;
+    }
+
 	/**
 	 * @return boolean
 	 */

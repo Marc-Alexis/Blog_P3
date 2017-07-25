@@ -21,7 +21,7 @@ class App
 	/**
 	 * @var $title Le titre de la page
 	 */
-	public $title = "Mon super blog";
+	public $title = "Billet simple pour l'Alaska";
 
 	/**
 	 * @return object L'instance de ma classe

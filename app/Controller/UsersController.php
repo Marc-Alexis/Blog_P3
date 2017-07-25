@@ -7,6 +7,8 @@ use \App;
 
 class UsersController extends AppController {
 
+    protected $template = 'userlay';
+
     public function __construct(){
         parent::__construct();
         $this->loadModel('User');
@@ -34,19 +36,29 @@ class UsersController extends AppController {
     }
 
     public function register(){
+	    $errUser = false;
+	    $errPass = false;
         if (!empty($_POST)) {
+            $auth = new DBAuth(App::getInstance()->getDb());
             $config = Config::getInstance('../config/config.php');
-            $result = $this->User->create([
-                'username' => $_POST['username'],
-                'password' => sha1($_POST['password']),
-                'role' => 'user'
-            ]);
-            if ($result) {
-                header('Location: ' . $config->get('home'));
+            if (!$auth->userExists($_POST['username'])){
+                if ($_POST['password'] === $_POST['repeatpass']){
+                    $result = $this->User->create([
+                        'username' => $_POST['username'],
+                        'password' => sha1($_POST['password']),
+                        'role' => 'user'
+                    ]);
+                    if ($result) {
+                        header('Location: ' . $config->get('home'));
+                    }
+                } else {
+                    $errPass = true;
+                }
+            } else {
+                $errUser = true;
             }
         }
         $form = new BootstrapForm($_POST);
-        $this->render('users.register', compact('form'));
-
+        $this->render('users.register', compact('form', 'errUser', 'errPass'));
     }
 }

@@ -3,8 +3,6 @@
 <p>
 	<a href="<?= $config->get('posts_add'); ?>" class="btn btn-success">Ajouter</a>
     <a href="<?= $config->get('comments_reported'); ?>" class="btn btn-warning">Commentaires Signalés</a>
-    <a href="<?= $config->get('admin_categories'); ?>" class="btn btn-default">Catégories</a>
-    <a href="<?= $config->get('admin_users'); ?>" class="btn btn-default">Utilisateurs</a>
 </p>
 
 <table class="table">

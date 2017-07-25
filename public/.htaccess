@@ -1,4 +1,14 @@
 RewriteEngine on
 
 RewriteCond ${REQUEST_FILENAME} !-f
+RewriteCond &{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !css$
+RewriteCond %{REQUEST_URI} !js$
+RewriteCond %{REQUEST_URI} !jpg$
+RewriteCond %{REQUEST_URI} !woff$
+RewriteCond %{REQUEST_URI} !woff2$
+RewriteCond %{REQUEST_URI} !ttf$
+RewriteCond %{REQUEST_URI} !map$
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+AddType text/css .css

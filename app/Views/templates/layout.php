@@ -12,13 +12,13 @@
     <title><?= App::getInstance()->title; ?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/blog_P3/public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="/blog_P3/public/css/clean-blog.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/blog_P3/public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -42,24 +42,34 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="<?= $config->get('home'); ?>">Jean Forteroche</a>
+            <?php if ($_SESSION) : ?>
+                <span class="navbar-brand"><i class="fa fa-user" aria-hidden="true"></i> <?= $_SESSION['name']?></span>
+            <?php endif; ?>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<?= $config->get('home'); ?>">Accueil</a>
+                    <a href="<?= $config->get('home'); ?>"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
                 </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="post.html">Sample Post</a>
-                </li>
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
+                <?php if ($_SESSION && $_SESSION['role'] == 'admin') : ?>
+                    <li>
+                        <a class="navbar-brand" href="<?= $config->get('admin_posts'); ?>"><i class="fa fa-cogs" aria-hidden="true"></i> Administration</a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($_SESSION) : ?>
+                    <li>
+                        <a href="<?= $config->get('logout'); ?>"><i class="fa fa-power-off" aria-hidden="true"></i> Déconnexion</a>
+                    </li>
+                <?php else : ?>
+                    <li>
+                        <a class="navbar-brand" href="<?= $config->get('login'); ?>"><i class="fa fa-power-off" aria-hidden="true"></i> Connexion</a>
+                    </li>
+                    <li>
+                        <a class="navbar-brand" href="<?= $config->get('register'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Inscription</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -68,81 +78,32 @@
 </nav>
 
 <!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Billet simple pour l'Alaska</h1>
-                    <hr class="small">
-                    <span class="subheading">Un livre de Jean Forteroche</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
 <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div>
-            <?= $content; ?>
-        </div>
-    </div>
-</div>
-
-<hr>
+<?= $content; ?>
 
 <!-- Footer -->
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    <li>
-                        <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                        </a>
-                    </li>
-                </ul>
-                <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                <p class="copyright text-muted">Copyright &copy; Billet simple pour l'Alaska 2017</p>
             </div>
         </div>
     </div>
 </footer>
 
 <!-- jQuery -->
-<script src="vendor/jquery/jquery.min.js"></script>
+<script src="/blog_P3/public/vendor/jquery/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/blog_P3/public/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Contact Form JavaScript -->
-<script src="js/jqBootstrapValidation.js"></script>
-<script src="js/contact_me.js"></script>
+<script src="/blog_P3/public/js/jqBootstrapValidation.js"></script>
+<script src="/blog_P3/public/js/contact_me.js"></script>
 
 <!-- Theme JavaScript -->
-<script src="js/clean-blog.min.js"></script>
+<script src="/blog_P3/public/js/clean-blog.min.js"></script>
 
 </body>
 

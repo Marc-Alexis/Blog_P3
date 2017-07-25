@@ -1,9 +1,5 @@
 <h1>Commentaires Signalés</h1>
-
-<p>
-    <a href="<?= $config->get('admin_posts'); ?>" class="btn btn-default">Articles</a>
-	<a href="<?= $config->get('admin_categories'); ?>" class="btn btn-default">Catégories</a>
-</p>
+<br>
 
 <table class="table">
 	<thead>

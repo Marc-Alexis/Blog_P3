@@ -42,7 +42,8 @@ class PostsController extends AppController{
             $result = $this->Comment->create([
                 'content' => $_POST['content'],
                 'art_id' => $id,
-                'usr_id' => $_SESSION['auth']
+                'usr_id' => $_SESSION['auth'],
+                'date_posted' => 'NOW()'
             ]);
             if ($result) {
                 return $this->show($id);
