@@ -23,9 +23,9 @@
                 foreach ($comments as $comment) : ?>
                     <p>
                         par <strong><?= $comment->username; ?></strong> |
-                        <em><?= $comment->date_posted; ?></em> |
+                        <em>le <?= $comment->when; ?></em>
                         <?php if ($comment->reported == FALSE) : ?>
-                            <a href="<?= $config->get('comment_report') . $article->id .DS. $comment->id; ?>">Signaler</a>
+                            | <a class="text-muted" href="<?= $config->get('comment_report') . $article->id .DS. $comment->id; ?>">Signaler</a>
                         <?php endif; ?>
                     </p>
                     <p><?= $comment->content; ?></p>

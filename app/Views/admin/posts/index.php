@@ -8,16 +8,16 @@
 <table class="table">
 	<thead>
 		<tr>
-			<td>ID</td>
 			<td>Titre</td>
+            <td>Posté le</td>
 			<td>Actions</td>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach ($posts as $post): ?>
 		<tr>
-			<td><?= $post->id; ?></td>
-			<td><?= $post->title; ?></td>
+			<td><a href="<?= $config->get('show') . $post->id ?>"><?= $post->title; ?></a></td>
+            <td><?= $post->when; ?></td>
 			<td>
 				<a href="<?= $config->get('posts_edit') . $post->id; ?>" class="btn btn-primary">Editer</a>
 				<form action="<?= $config->get('posts_delete'); ?>" method="post" style="display: inline;">

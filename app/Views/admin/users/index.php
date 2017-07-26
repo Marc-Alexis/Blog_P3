@@ -7,7 +7,6 @@
 <table class="table">
 	<thead>
 		<tr>
-			<td>ID</td>
 			<td>Nom</td>
 			<td>Rôle</td>
 			<td>Actions</td>
@@ -16,7 +15,6 @@
 	<tbody>
 		<?php foreach ($items as $user): ?>
 		<tr>
-			<td><?= $user->id; ?></td>
 			<td><?= $user->username; ?></td>
             <td><?= $user->role; ?></td>
 			<td>

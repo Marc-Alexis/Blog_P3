@@ -13,7 +13,7 @@
 	<tbody>
 		<?php foreach ($comments as $comment): ?>
 		<tr>
-			<td><?= $comment->article; ?></td>
+			<td><a href="<?= $config->get('show').$comment->art_id ?>"><?= $comment->article; ?></a></td>
 			<td><?= $comment->username; ?></td>
             <td><?= $comment->excerpt; ?></td>
 			<td>

@@ -13,23 +13,26 @@
 
 <div class="container">
     <div class="row">
-            <div class="col-md-9">
-                <?php foreach ($articles as $post): ?>
-
-                    <h2><a href="<?= $post->url; ?>"><?= $post->title; ?></a></h2>
-
-                    <p><em><?= $post->category; ?></em></p>
-
-                    <p><?= $post->excerpt; ?></p>
-
-                <?php endforeach; ?>
-            </div>
-            <div class="col-sm-3">
-                <h4>Catégories</h4>
-                <?php foreach ($categories as $category): ?>
-                    <a href="<?= $category->url; ?>"><?= $category->name; ?></a><br>
-                <?php endforeach; ?>
-            </div>
+        <div class="col-md-9">
+            <?php foreach ($articles as $post): ?>
+                <div class="post-preview">
+                    <a href="<?= $post->url; ?>">
+                        <h2 class="post-title">
+                            <?= $post->title; ?>
+                        </h2>
+                    </a>
+                    <p class="post-meta">
+                        Posté le <?= $post->when; ?>
+                    </p>
+                </div>
+                <hr>
+            <?php endforeach; ?>
+        </div>
+        <div class="col-md-3">
+            <h4>Catégories</h4>
+            <?php foreach ($categories as $category): ?>
+                <a href="<?= $category->url; ?>"><?= $category->name; ?></a><br>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

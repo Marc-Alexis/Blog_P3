@@ -31,8 +31,9 @@ class MysqlDatabase extends Database{
 	 */
 	private function getPDO(){
 		if ($this->pdo === null) {			
-			$pdo = new PDO('mysql:dbname=blogP3;host=localhost', 'root', '');
+			$pdo = new PDO('mysql:dbname='.$this->dbName.';host='.$this->dbHost, $this->dbUser, $this->dbPassword);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$pdo->exec("SET lc_time_names = 'fr_FR'");
 			$this->pdo = $pdo;
 		}
 		return $this->pdo;

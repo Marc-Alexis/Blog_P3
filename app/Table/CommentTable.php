@@ -17,7 +17,9 @@ class CommentTable extends Table{
      */
 	public function lastByArticle($art_id){
 		return $this->query("
-			SELECT comments.id, comments.content, comments.date_posted, comments.reported, users.username as username
+			SELECT comments.id, comments.content, comments.reported, users.username as username,
+			DAYNAME(comments.date_posted) as joursem, DAY(comments.date_posted) as jour, MONTHNAME(comments.date_posted) as mois, YEAR(comments.date_posted) as annee, 
+			HOUR(comments.date_posted) as heure, MINUTE(comments.date_posted) as minute
 			FROM comments
 			LEFT JOIN users ON usr_id = users.id
 			LEFT JOIN articles ON art_id = articles.id
@@ -32,7 +34,9 @@ class CommentTable extends Table{
      */
 	public function lastByUser($usr_id){
 		return $this->query("
-			SELECT comments.id, comments.content, comments.date_posted, comments.reported, users.username as username, articles.title as article
+			SELECT comments.id, comments.content, comments.reported, users.username as username, articles.title as article,
+			DAYNAME(comments.date_posted) as joursem, DAY(comments.date_posted) as jour, MONTHNAME(comments.date_posted) as mois, YEAR(comments.date_posted) as annee, 
+			HOUR(comments.date_posted) as heure, MINUTE(comments.date_posted) as minute
 			FROM comments
 			LEFT JOIN users ON usr_id = users.id
 			LEFT JOIN articles ON art_id = articles.id
@@ -45,7 +49,9 @@ class CommentTable extends Table{
      */
 	public function lastReportedComments(){
 		return $this->query("
-			SELECT comments.id, comments.content, comments.date_posted, comments.reported, users.username as username, articles.title as article
+			SELECT comments.id, comments.content, comments.reported, users.username as username, articles.title as article, comments.art_id,
+			DAYNAME(comments.date_posted) as joursem, DAY(comments.date_posted) as jour, MONTHNAME(comments.date_posted) as mois, YEAR(comments.date_posted) as annee, 
+			HOUR(comments.date_posted) as heure, MINUTE(comments.date_posted) as minute
 			FROM comments
 			LEFT JOIN users ON usr_id = users.id
 			LEFT JOIN articles ON art_id = articles.id

@@ -21,12 +21,12 @@
                     <h2 class="post-title">
                         <?= $post->title; ?>
                     </h2>
+                    <em class="post-subtitle">
+                        <?= $post->category; ?>
+                    </em>
                 </a>
-                <em class="post-subtitle">
-                    <?= $post->category; ?>
-                </em>
-                <p>
-                    <?= $post->excerpt ?>
+                <p class="post-meta">
+                    Posté le <?= $post->when; ?>
                 </p>
             </div>
             <hr>

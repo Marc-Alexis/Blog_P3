@@ -7,7 +7,6 @@
 <table class="table">
 	<thead>
 		<tr>
-			<td>ID</td>
 			<td>Titre</td>
 			<td>Actions</td>
 		</tr>
@@ -15,7 +14,6 @@
 	<tbody>
 		<?php foreach ($items as $category): ?>
 		<tr>
-			<td><?= $category->id; ?></td>
 			<td><?= $category->name; ?></td>
 			<td>
 				<a href="<?= $config->get('categories_edit'); ?><?= $category->id; ?>" class="btn btn-primary">Editer</a>
